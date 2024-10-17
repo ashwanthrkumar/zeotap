@@ -18,11 +18,11 @@ def save_rule_to_db(rule_string, rule_ast):
     Returns:
         ObjectId: The ID of the inserted document.
     """
-    # Convert the AST to a dictionary format for storage
+   
     rule_ast_dict = json.dumps(rule_ast.__dict__, default=str)
     rule_doc = {"rule": rule_string, "ast": rule_ast_dict}
     
-    # Insert the document into the collection
+    
     result = rules_collection.insert_one(rule_doc)
     return result.inserted_id
 
@@ -41,7 +41,7 @@ def get_rule_from_db(rule_id):
     """
     rule_doc = rules_collection.find_one({"_id": ObjectId(rule_id)})
     if rule_doc:
-        # Deserialize the AST back to its original structure
+        
         return json.loads(rule_doc['ast'])
     else:
         raise ValueError("Rule not found")
