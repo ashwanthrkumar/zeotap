@@ -40,8 +40,6 @@ def build_ast(node):
         op = operator_map.get(op, op)  # Replace operator with its Python equivalent
         return Node("operand", value=f"{left} {op} {right}")
 
-
-
 def combine_rules(asts):
     if len(asts) == 1:
         return asts[0]
@@ -60,7 +58,6 @@ def evaluate_ast(node, data):
             return left_eval or right_eval
     elif node['type'] == "logical":
         # You can define the logic for "logical" nodes here
-        # For example, assuming "logical" is like "not" operation:
         if node['value'] == "Not":
             return not evaluate_ast(node['left'], data)
     elif node['type'] == "operand":
@@ -69,6 +66,3 @@ def evaluate_ast(node, data):
         return eval(expression, {}, data)  # Pass data as local scope
     else:
         raise ValueError(f"Unknown node type: {node['type']}")
-
-
-
