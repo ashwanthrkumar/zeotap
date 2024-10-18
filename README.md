@@ -32,4 +32,4 @@ Follow the below steps
 ```bash
   python app.py
 ```
-7) 
+7) Open Postman Application and check the api calls.
